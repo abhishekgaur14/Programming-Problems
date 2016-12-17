@@ -1,3 +1,3 @@
 #Various C/C++ programming questions 
-##Topics included:
+<b>Topics included:</b><br>
 - <b>Sorting Algorithms:</b> Quicksort
