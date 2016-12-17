@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 #include <algorithm>
 #include "arrayUtils.h"
 
@@ -24,7 +23,6 @@ int partition(int *arr,int begin, int end)
 	return pIndex;
 }
 
-
 void quickSort(int *arr, int begin, int end)
 {
 	if(begin<end){
@@ -33,15 +31,6 @@ void quickSort(int *arr, int begin, int end)
 		quickSort(arr, pIndex+1, end);
 	}
 }
-
-/*void printArray(int *arr, int size)
-{
-	for(int i=0;i<size;i++)
-	{
-		cout<<arr[i]<<" ";
-	}
-	cout<<endl;
-}*/
 
 int main(){
 	int *arr;
