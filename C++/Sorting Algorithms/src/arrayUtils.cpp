@@ -1,3 +1,6 @@
+/* This file contains utility functions
+for array like Print etc. */
+
 #include <iostream>
 #include "arrayUtils.h"
 

@@ -1,10 +1,12 @@
+/* This file contains implementation of 
+all sorting algorithms*/
+
 #include <iostream>
 #include "sortingAlgos.h"
 
 using namespace std;
 
-/*----------------------Merge Sort Begins--------------------*/
-
+/*---------------------------------Merge Sort Begins------------------------------------*/
 void merge(int *arr, int *left, int *right, int left_size, int right_size)
 {
 	int i, j, k;

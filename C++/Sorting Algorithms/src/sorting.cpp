@@ -1,3 +1,7 @@
+/* This file contains the main function which accepts
+input from the user in form of array size, array element 
+and the algorithm to use*/
+
 #include <iostream>
 #include "arrayUtils.h"
 #include "sortingAlgos.h"
