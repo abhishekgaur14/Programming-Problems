@@ -14,7 +14,7 @@ int main(){
 	char algo;			//algo to use
 	int element;        		//element to be searched
 	int index;			//index of the found element; assigned -1 if element not found.
-	char sorted_data;
+	char sorted_data;		//data is sorted or not for binary search
 
 	cout<<"Please specify the size of your array:"<<endl;
 	cin>>size;
