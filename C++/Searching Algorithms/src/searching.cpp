@@ -12,7 +12,7 @@ int main(){
 	int *arr;			//initial array
 	int size;			//size of the array
 	char algo;			//algo to use
-	int element;		//element to be searched
+    int element;        //element to be searched
 	int index;			//index of the found element; assigned -1 if element not found.
 	char sorted_data;
 
