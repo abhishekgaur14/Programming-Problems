@@ -18,21 +18,38 @@ int linearSearch(int *arr, int size, int n)
 /*------------------Linear Search Ends------------------*/
 
 
+
 /*------------------Binary Search Begins------------------*/
-int binarySearch(int *arr, int begin, int end, int n)
+int binarySearch(int *arr, int size, int n, char flag)
 {
-	int mid = (end+begin) /2;
+	int low = 0;
+	int high = size-1;
+	int result = -1;							//to find the first/last occurence of the number
+	while(low<=high){
+		int mid = (high+low) /2;
 
-	if(arr[mid]==n)
-		return mid;
+		if(arr[mid]==n)
+		{
+			if(flag == 'F' || flag =='f')
+			{	
+				high = mid - 1;
+			}
+			else if(flag == 'L' || flag == 'l')
+			{
+				low = mid + 1;
+			}
+			else if(flag == 'A' || flag == 'a')
+				return mid;
+			result = mid;
+		}
 
-	else if(arr[mid]>n)
-		return binarySearch(arr, begin, mid-1,n);
+		else if(arr[mid]>n)
+			high = mid-1;
 
-	else if(arr[mid]<n)
-		return binarySearch(arr, mid+1, end, n);
-
-	else 
-		return -1;
+		else if(arr[mid]<n)
+			low = mid+1;
+	}
+	
+	return result;	
 }
 /*------------------Binary Search Ends------------------*/

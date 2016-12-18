@@ -1,2 +1,2 @@
-int binarySearch(int *arr, int begin, int end, int n);
+int binarySearch(int *arr, int size, int n, char flag);
 int linearSearch(int *arr, int size, int n);

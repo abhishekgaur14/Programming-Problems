@@ -15,6 +15,7 @@ int main(){
 	int element;        		//element to be searched
 	int index;			//index of the found element; assigned -1 if element not found.
 	char sorted_data;		//data is sorted or not for binary search
+	char option;
 
 	cout<<"Please specify the size of your array:"<<endl;
 	cin>>size;
@@ -34,8 +35,6 @@ int main(){
 	cout<<"Which algorithm would you like to use: Linear Search(L/l) or Binary Search(B/b)?"<<endl;
 	cin>>algo;	
 
-	cout<<endl;
-
 	switch(algo)
 	{
 		case 'L': cout<<"Using Linear Search..."<<endl;
@@ -48,9 +47,11 @@ int main(){
 				cin>>sorted_data;
 				if(sorted_data == 'Y' || sorted_data == 'y')
 				{
+					cout<<"Do you want to find first or the last occurence of your number? Press 'A' for any occurence. [F/L/A]"<<endl;
+					cin>>option;
 					cout<<"Using Binary Search..."<<endl;
-			  		index = linearSearch(arr,size,element);
-			  	}
+			  		index = binarySearch(arr,size,element,option);
+				}
 			  	else
 			  	{
 			  		cout<<"Can't perform search on unsorted data."<<endl;
@@ -61,9 +62,11 @@ int main(){
 				cin>>sorted_data;
 				if(sorted_data == 'Y' || sorted_data == 'y')
 				{
+					cout<<"Do you want to find first or the last occurence of your number? Press 'A' for any occurence. [F/L/A]"<<endl;
+					cin>>option;
 					cout<<"Using Binary Search..."<<endl;
-			  		index = linearSearch(arr,size,element);
-			  	}
+			  		index = binarySearch(arr,size,element,option);
+				}
 			  	else
 			  	{
 			  		cout<<"Can't perform search on unsorted data."<<endl;
