@@ -1,3 +1,7 @@
-#Various C/C++ programming questions 
-<b>Topics included:</b><br>
-- <b>Sorting Algorithms:</b> Quicksort
+#Sorting Algorithms 
+<b>Includea:</b><br>
+- Quicksort
+- Mergesort
+
+<b> Compilation:</b> Just run the Makefile to compile the program. 
+<b> Executable:</b> Run the file named "sorting" placed in the **bin** folder. 
