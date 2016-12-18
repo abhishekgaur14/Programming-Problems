@@ -1,4 +1,4 @@
-TARGET = quicksort
+TARGET = sorting
 IDIR =./include
 CC=g++
 CFLAGS=-I$(IDIR)
@@ -8,10 +8,10 @@ SRC = ./src
 ODIR=./obj
 LDIR =./lib
 
-_DEPS = arrayUtils.h
+_DEPS = arrayUtils.h sortingAlgos.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = quicksort.o arrayUtils.o 
+_OBJ = sortingAlgos.o arrayUtils.o sorting.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
