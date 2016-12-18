@@ -14,6 +14,7 @@ int main(){
 	char algo;			//algo to use
 	int element;		//element to be searched
 	int index;			//index of the found element; assigned -1 if element not found.
+	char sorted_data;
 
 	cout<<"Please specify the size of your array:"<<endl;
 	cin>>size;
@@ -42,6 +43,32 @@ int main(){
 				break;
 		case 'l': cout<<"Using Linear Search..."<<endl;
 			  	index = linearSearch(arr,size,element);
+				break;
+		case 'B': cout<<"Binary Search can only be done on sorted data? Is your data sorted? [Y/N]"<<endl;
+				cin>>sorted_data;
+				if(sorted_data == 'Y' || sorted_data == 'y')
+				{
+					cout<<"Using Binary Search..."<<endl;
+			  		index = linearSearch(arr,size,element);
+			  	}
+			  	else
+			  	{
+			  		cout<<"Can't perform search on unsorted data."<<endl;
+			  		exit(0);
+			  	}
+				break;
+		case 'b': cout<<"Binary Search can only be done on sorted data? Is your data sorted? [Y/N]"<<endl;
+				cin>>sorted_data;
+				if(sorted_data == 'Y' || sorted_data == 'y')
+				{
+					cout<<"Using Binary Search..."<<endl;
+			  		index = linearSearch(arr,size,element);
+			  	}
+			  	else
+			  	{
+			  		cout<<"Can't perform search on unsorted data."<<endl;
+			  		exit(0);
+			  	}
 				break;
 		default:  cout<<"Using Linear Search..."<<endl;
 			  	index = linearSearch(arr,size,element);
