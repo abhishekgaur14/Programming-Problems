@@ -157,23 +157,23 @@ int LinkedList::getLength()
 void LinkedList::reverseUtil(Node** head_ref)
 {
 	Node* first;
-    Node* rest;
-      
-    if (*head_ref == NULL)
-       return;   
- 
-    first = *head_ref;  
-    rest  = first->next;
- 
-    /* List has only one node */
-    if (rest == NULL)
-       return;   
- 
-    reverseUtil(&rest);
-    first->next->next  = first;  
-    first->next  = NULL;          
- 
-    *head_ref = rest;
+	Node* rest;
+	  
+	if (*head_ref == NULL)
+	   return;   
+
+	first = *head_ref;  
+	rest  = first->next;
+
+	/* List has only one node */
+	if (rest == NULL)
+	   return;   
+
+	reverseUtil(&rest);
+	first->next->next  = first;  
+	first->next  = NULL;          
+
+	*head_ref = rest;
 }
 
 
