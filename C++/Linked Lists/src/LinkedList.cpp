@@ -51,26 +51,21 @@ void LinkedList :: insert(int data, int pos)
 
 void LinkedList :: display()
 {
-	if(head == NULL)
-		cout<<"Linked List is empty.\n"<<endl;
-
-	else{
-		Node* temp = head;
-		
-		cout<<"\nThe contents of the Linked List are:\n";
-		while(temp != NULL)
-		{
-			cout<<temp->data<<" -> ";
-			temp = temp->next;
-		}
-		cout<<"NULL\n\n";
+	Node* temp = head;
+	
+	cout<<"\nThe contents of the Linked List are:\n";
+	while(temp != NULL)
+	{
+		cout<<temp->data<<" -> ";
+		temp = temp->next;
 	}
+	cout<<"NULL\n\n";
 }
 
 void LinkedList::deleteByPosition(int pos)
 {
 	Node* temp = head;
-	
+
 	if(pos==1)
 	{
 		head = temp->next;
@@ -113,4 +108,41 @@ void LinkedList::deleteByData(int data)
 		}
 		cout<<"\nElement does not exist in the list.\n\n";
 	}
+}
+
+void LinkedList::printReverse(Node* node)
+{
+	if(node == NULL)
+	{	
+		cout<<"NULL";
+		return;
+	}
+	printReverse(node->next);
+	cout<<" -> "<<node->data;
+}
+
+Node* LinkedList::getHead()
+{
+	return head;
+}
+
+bool LinkedList::isEmpty()
+{
+	if(head==NULL)
+		return true;
+	return false;
+}
+
+int LinkedList::getLength()
+{
+	if(isEmpty())
+		return 0;
+	Node* temp = head;
+	int length = 0;
+	while(temp!=NULL)
+	{
+		length++;
+		temp = temp->next;
+	}
+	return length;
 }

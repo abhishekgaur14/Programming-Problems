@@ -19,6 +19,10 @@ public:
 	void display();
 	void deleteByPosition(int pos);
 	void deleteByData(int data);
+	void printReverse(Node* node);
+	Node* getHead();
+	bool isEmpty();
+	int getLength();
 };
 
 #endif 
