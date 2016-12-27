@@ -23,6 +23,8 @@ public:
 	Node* getHead();
 	bool isEmpty();
 	int getLength();
+	void reverse(int flag);
+	void reverseUtil(Node** head_ref);
 };
 
 #endif 

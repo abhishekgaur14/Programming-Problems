@@ -62,6 +62,7 @@ void LinkedList :: display()
 	cout<<"NULL\n\n";
 }
 
+
 void LinkedList::deleteByPosition(int pos)
 {
 	Node* temp = head;
@@ -80,6 +81,7 @@ void LinkedList::deleteByPosition(int pos)
 		free(temp2);
 	}
 }
+
 
 void LinkedList::deleteByData(int data)
 {
@@ -110,6 +112,7 @@ void LinkedList::deleteByData(int data)
 	}
 }
 
+
 void LinkedList::printReverse(Node* node)
 {
 	if(node == NULL)
@@ -121,10 +124,12 @@ void LinkedList::printReverse(Node* node)
 	cout<<" -> "<<node->data;
 }
 
+
 Node* LinkedList::getHead()
 {
 	return head;
 }
+
 
 bool LinkedList::isEmpty()
 {
@@ -132,6 +137,7 @@ bool LinkedList::isEmpty()
 		return true;
 	return false;
 }
+
 
 int LinkedList::getLength()
 {
@@ -145,4 +151,53 @@ int LinkedList::getLength()
 		temp = temp->next;
 	}
 	return length;
+}
+
+
+void LinkedList::reverseUtil(Node** head_ref)
+{
+	Node* first;
+    Node* rest;
+      
+    if (*head_ref == NULL)
+       return;   
+ 
+    first = *head_ref;  
+    rest  = first->next;
+ 
+    /* List has only one node */
+    if (rest == NULL)
+       return;   
+ 
+    reverseUtil(&rest);
+    first->next->next  = first;  
+    first->next  = NULL;          
+ 
+    *head_ref = rest;
+}
+
+
+void LinkedList::reverse(int flag)		//flag = 0: iterative reversal, 1: recursive reversal
+{
+	if(flag==0)
+	{	
+		cout<<"\nThe Linked List has been reversed iteratively.\n\n";
+		Node *prev, *current, *nextNode;
+		prev = NULL;
+		current = head;
+
+		while(current!=NULL)
+		{
+			nextNode = current->next;
+			current->next = prev;
+			prev = current;
+			current = nextNode;
+		}
+		head = prev;
+	}
+
+	if(flag==1){
+		cout<<"\nThe Linked List has been reversed recursively.\n\n";
+		reverseUtil(&head);	
+	}
 }

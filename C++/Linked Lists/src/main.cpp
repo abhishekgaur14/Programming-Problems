@@ -16,6 +16,7 @@ int main()
 		cout<<"3. Delete an element from the Linked List.\n";
 		cout<<"4. Display the Linked List in reversed order.\n";
 		cout<<"5. Display the number of elements in the Linked List.\n";
+		cout<<"6. Reverse the Linked List.\n";
 		cout<<"Enter your option(1/2/3/4/5): ";
 		cin>>option;
 		cout<<endl;
@@ -88,6 +89,18 @@ int main()
 					break;
 
 			case 5: cout<<"The number of elements in the Linked List are: "<<listObj.getLength()<<"\n\n";
+					break;
+
+			case 6: cout<<"Would you like to reverse the Linked List- \n\t1. Iteratively\n\t2. Recursively\nThe result will remain the same. Enter your choice: ";
+					cin>>suboption;
+					
+					if(suboption==1)
+						listObj.reverse(0);
+					else if(suboption==2)
+						listObj.reverse(1);	
+					else
+						cout<<"Invalid choice. Exiting! \n\n";
+
 					break;
 
 			default: cout<<"\nWrong input.";
