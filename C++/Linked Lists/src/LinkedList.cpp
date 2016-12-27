@@ -153,7 +153,7 @@ int LinkedList::getLength()
 	return length;
 }
 
-
+/*utility funtion for recursive reversal*/
 void LinkedList::reverseUtil(Node** head_ref)
 {
 	Node* first;
