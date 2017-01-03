@@ -1,2 +1,4 @@
 #include "LinkedList.h"
-void removeDuplicates(Node* head_ref);
+
+//Question 1: Remove duplicate elements of Linked Lists
+void removeDuplicates(Node* head);
