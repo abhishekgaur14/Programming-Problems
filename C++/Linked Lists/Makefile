@@ -8,10 +8,10 @@ SRC = ./src
 ODIR=./obj
 LDIR =./lib
 
-_DEPS = LinkedList.h linkedListUtils.h
+_DEPS = LinkedList.h linkedListUtils.h ctci.h 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = LinkedList.o main.o linkedListUtils.o
+_OBJ = LinkedList.o main.o linkedListUtils.o ctci.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

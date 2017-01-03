@@ -7,9 +7,10 @@ struct Node{
 };
 
 class LinkedList{
+	
+public:
 	Node *head;
 
-public:
 	LinkedList()
 	{
 		head = NULL;

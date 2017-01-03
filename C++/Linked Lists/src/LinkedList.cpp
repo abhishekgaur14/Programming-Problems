@@ -53,7 +53,7 @@ void LinkedList :: display()
 {
 	Node* temp = head;
 	
-	cout<<"\nThe contents of the Linked List are:\n";
+	cout<<"The contents of the Linked List are:\n";
 	while(temp != NULL)
 	{
 		cout<<temp->data<<" -> ";

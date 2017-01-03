@@ -1,6 +1,7 @@
 #include <iostream>
 #include "LinkedList.h"
 #include "linkedListUtils.h"
+#include "ctci.h"
 
 using namespace std;
 
@@ -17,7 +18,8 @@ int main()
 		cout<<"4. Display the Linked List in reversed order.\n";
 		cout<<"5. Display the number of elements in the Linked List.\n";
 		cout<<"6. Reverse the Linked List.\n";
-		cout<<"Enter your option(1/2/3/4/5): ";
+		cout<<"7. Cracking the Coding Interview Solutions.\n";
+		cout<<"Enter your option(1-7): ";
 		cin>>option;
 		cout<<endl;
 		
@@ -83,7 +85,7 @@ int main()
 						cout<<"The Linked List is empty.";
 					else{
 						cout<<"The Linked List is reversed order looks like this:\n";
-						listObj.printReverse(listObj.getHead());
+						listObj.printReverse(listObj.head);
 					}
 					cout<<endl<<endl;
 					break;
@@ -101,6 +103,16 @@ int main()
 					else
 						cout<<"Invalid choice. Exiting! \n\n";
 
+					break;
+
+			case 7: cout<<"Please select the question number which you want to run:\n";
+					cout<<"1. Remove duplicates from an unsorted linkedList.\n";
+					cout<<"Enter your choice: ";
+					cin>>suboption;
+
+					if(suboption==1){					
+					 	removeDuplicates(listObj.head);
+					}
 					break;
 
 			default: cout<<"\nWrong input.";

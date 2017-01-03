@@ -1,7 +1,6 @@
 #include <iostream>
 #include "linkedListUtils.h"
 
-
 using namespace std;
 
 int subOptionSelection()
