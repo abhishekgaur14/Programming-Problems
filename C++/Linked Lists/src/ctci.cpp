@@ -6,7 +6,7 @@ using namespace std;
 
 void removeDuplicates(Node* head)
 {
-    if(head==NULL){
+	if(head==NULL){
 		cout<<"\nThe Linked List is empty.\n\n";
 		return;
 	}
@@ -16,7 +16,7 @@ void removeDuplicates(Node* head)
 	Node* current = head;
 
 	map[current->data] = 1;
-	
+
 	while(current->next)
 	{
 		if(map[current->next->data]==0)
@@ -39,5 +39,4 @@ void removeDuplicates(Node* head)
 	{
 		cout<<"No duplicates were found in the list\n\n";
 	}
-
 }
