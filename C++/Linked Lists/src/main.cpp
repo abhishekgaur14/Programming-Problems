@@ -106,12 +106,35 @@ int main()
 					break;
 
 			case 7: cout<<"Please select the question number which you want to run:\n";
-					cout<<"1. Remove duplicates from an unsorted linkedList.\n";
+					cout<<"1. Remove duplicates from an unsorted Linked List.\n";
+					cout<<"2. Find out nth node to last node of the Linked List.\n";
 					cout<<"Enter your choice: ";
 					cin>>suboption;
 
 					if(suboption==1){					
 					 	removeDuplicates(listObj.head);
+					}
+
+					if(suboption==2)
+					{
+						if(!listObj.isEmpty())
+						{
+							cout<<"Enter the value of n: ";
+							cin>>pos;
+							//int i=0;													//Uncomment this to use the recursive solution.
+							//Node* nthToLastNode = nthToLast_r(listObj.head, pos, i);	//Uncomment this and comment the next two lines to use recursive solution
+							//Node* nthToLastNode = nthToLast_i(listObj.head, pos);		//Uncomment this and comment the previous two and the next line to use the iterative solution.
+							Node* nthToLastNode = nthToLast_alt(listObj.head, pos);		//Comment this to use the recursive or iterative solution. Also uncomment the one you want to use.
+							if(nthToLastNode)
+								cout<<"\nThe nth node to the last node of the Linked List is: "<<nthToLastNode->data<<endl<<endl;
+							else{
+								cout<<"\nYou've probably entered a value of n larger than the number of nodes in the list or a negative value. 0 and negative numbers are invalid."; 
+								cout<<"\nThe list has "<<listObj.getLength()<<" nodes right now. Enter a number equal to or smaller than this. \n\n";
+							}
+						}
+
+						else
+							cout<<"\nThe list is empty right now.\n\n";
 					}
 					break;
 

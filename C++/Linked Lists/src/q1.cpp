@@ -1,10 +1,10 @@
+/*-------------Q1. Program to remove the duplicates from the Linked List----------------*/
+
 #include <iostream>
 #include <unordered_map>
 #include "ctci.h"
 
 using namespace std;
-
-/*-------------Q1. Program to remove the duplicates from the Linked List----------------*/
 
 //Duplicate Removal using extra buffer 
 //Uncomment this and comment the next function (removeDuplicates) to use this fucntion
@@ -91,5 +91,3 @@ void removeDuplicates(Node* head)
 		cout<<"No duplicates were found in the list\n\n";
 	}
 }
-
-/*---------------------------------------End of Q1------------------------------------------------*/

@@ -11,7 +11,7 @@ LDIR =./lib
 _DEPS = LinkedList.h linkedListUtils.h ctci.h 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = LinkedList.o main.o linkedListUtils.o q1.o
+_OBJ = LinkedList.o main.o linkedListUtils.o q1.o q2.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
