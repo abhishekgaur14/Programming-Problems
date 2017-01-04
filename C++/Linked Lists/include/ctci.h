@@ -7,3 +7,6 @@ void removeDuplicates(Node* head);
 Node* nthToLast_r(Node* head, int k, int& i);
 Node* nthToLast_i(Node* head, int k);
 Node* nthToLast_alt(Node* head, int k);
+
+//Question 3: Delete a node in middle of the Linked List, given access to only that node
+bool removeFromMiddle(Node* node);

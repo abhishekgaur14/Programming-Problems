@@ -108,6 +108,7 @@ int main()
 			case 7: cout<<"Please select the question number which you want to run:\n";
 					cout<<"1. Remove duplicates from an unsorted Linked List.\n";
 					cout<<"2. Find out nth node to last node of the Linked List.\n";
+					cout<<"3. Delete a node in the middle of singly Linked List, given only access to that node.\n";
 					cout<<"Enter your choice: ";
 					cin>>suboption;
 
@@ -136,6 +137,29 @@ int main()
 						else
 							cout<<"\nThe list is empty right now.\n\n";
 					}
+
+					if(suboption==3)
+					{
+						cout<<"\nEnter the position number of the node that you want to remove: ";
+						cin>> pos;
+						
+						if(pos>listObj.getLength())
+							cout<<"The position you entered is bigger than the list. The list has "<<listObj.getLength()<<" elements right now.\n\n";
+						
+						else
+						{
+							Node* nodeToRemove = listObj.head;
+							for(int i=pos;i>1;i--)
+								nodeToRemove = nodeToRemove->next;
+
+							cout<<"\nRemoving the node with value "<<nodeToRemove->data<<".";
+							if(removeFromMiddle(nodeToRemove))
+								cout<<"\nNode has been removed.\n\n";
+							else
+								cout<<"\nYou've entered the position of the last node. This program works for middle elements only.\n\n";
+						}
+					}
+
 					break;
 
 			default: cout<<"\nWrong input.";
