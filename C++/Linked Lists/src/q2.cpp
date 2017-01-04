@@ -58,6 +58,7 @@ Node* nthToLast_i(Node* head, int k)
 
 
 //Alternate Solution
+//Time Complexity: O(n)
 Node* nthToLast_alt(Node* head, int k)
 {
 	if (head==NULL)
