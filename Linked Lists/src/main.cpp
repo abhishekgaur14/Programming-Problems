@@ -114,6 +114,7 @@ int main()
 					cout<<"2. Find out nth node to last node of the Linked List.\n";
 					cout<<"3. Delete a node in the middle of singly Linked List, given only access to that node.\n";
 					cout<<"4. Partition the Linked List around a value x, such that all nodes less than x come before all node greater than or equal to x.\n";
+					cout<<"5. Add two numbers stored as two different linked lists. Digits are nodes of respective lists stored in reverse order. The sum is stored in a similar manner as two digits.\n";
 					cout<<"Enter your choice: ";
 					cin>>suboption;
 
@@ -181,6 +182,16 @@ int main()
 
 						else
 							cout<<"\nThe list is empty right now.\n\n";
+					}
+
+					if(suboption==5)
+					{
+						int x, y;
+						cout<<"\nEnter the first number: ";
+						cin>>x;
+						cout<<"Enter the second number: ";
+						cin>>y;
+						addLists(x,y);
 					}
 
 					break;
