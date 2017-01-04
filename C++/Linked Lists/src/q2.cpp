@@ -8,6 +8,7 @@ using namespace std;
 
 //Recursive solution
 //Time Complexity: O(n)
+//Space Complexity: O(n)
 Node* nthToLast_r(Node* head, int k, int& i)
 {
 	if(head==NULL)
@@ -26,6 +27,7 @@ Node* nthToLast_r(Node* head, int k, int& i)
 
 //Iterative Solution
 //Time Complexity: O(n)
+//Space Complexity: O(1)
 Node* nthToLast_i(Node* head, int k)
 {
 	if(head==NULL)
@@ -59,6 +61,7 @@ Node* nthToLast_i(Node* head, int k)
 
 //Alternate Solution
 //Time Complexity: O(n)
+//Space Complexity: O(1)
 Node* nthToLast_alt(Node* head, int k)
 {
 	if (head==NULL)

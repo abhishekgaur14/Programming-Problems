@@ -3,6 +3,28 @@
 
 using namespace std;
 
+
+LinkedList::LinkedList()
+{
+	this->head = NULL;
+}	
+
+LinkedList::~LinkedList()
+{
+	Node* current = head;
+
+	while (current)
+	{ 
+	    Node* next = current->next;
+	    delete current;
+	    current = next;
+	}
+
+	head = NULL;
+
+	cout << "List successfully deleted from memory.\n" << endl;
+}
+
 void LinkedList :: insert(int data, int pos)
 {
 	Node* newNode;

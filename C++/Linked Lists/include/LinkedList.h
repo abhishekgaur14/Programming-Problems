@@ -11,11 +11,9 @@ class LinkedList{
 public:
 	Node *head;
 
-	LinkedList()
-	{
-		head = NULL;
-	}	
-
+	LinkedList();
+	~LinkedList();
+	
 	void insert(int data, int pos);
 	void display();
 	void deleteByPosition(int pos);
