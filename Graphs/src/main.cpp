@@ -4,8 +4,11 @@
 int main()
 {
 	int option;
+
+	//Making an arbitrary graph consisting of 4 vertices 0,1,2,3
 	Graph g(4);
 
+	//defining the edges of the vertices of the graphs
 	g.addEdge(0,1);
 	g.addEdge(0,2);
 	g.addEdge(1,2);
