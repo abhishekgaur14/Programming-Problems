@@ -12,6 +12,10 @@ void Graph::addEdge(int v, int w)
 	adj[v].push_back(w);
 }
 
+
+
+//Breadth First Traversal
+//Time Complexity: O(V+E), where V = number of vertices and E = number of edges
 void Graph::BFS(int s)
 {
 	bool *visited = new bool[V];
@@ -52,6 +56,9 @@ void Graph::BFS(int s)
 	}
 }
 
+
+//Depth First Traversal
+//Time Complexity: O(V+E), where V = number of vertices and E = number of edges
 void Graph::DFS()
 {
 	bool *visited = new bool[V];
