@@ -7,7 +7,7 @@ using namespace std;
 class Graph
 {
 	private:
-		int V;						//V - Number of vertices in the graph
+		int V;					//V - Number of vertices in the graph
 		list<int> *adj;				//Adjacency list to hold the adjacent nodes of a vertex
 
 	public:
