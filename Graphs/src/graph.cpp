@@ -62,7 +62,8 @@ void Graph::DFS()
 		visited[i]=false;
 	}
 
-	//call the DFS Utility funtion
+	//call the DFS Utility funtion for all unvisited vertices
+	//we do this because all vertices may not be reachable from a given vertex (Undirected Graph)
 	for(int i=0;i<V;i++)
 	{
 		if(!visited[i])
