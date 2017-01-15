@@ -51,3 +51,35 @@ void Graph::BFS(int s)
 		}
 	}
 }
+
+void Graph::DFS(int v)
+{
+	bool *visited = new bool[V];
+	
+	//Mark all nodes as not visited	
+	for(int i=0;i<V;i++)
+	{
+		visited[i]=false;
+	}
+
+	//call the DFS Utility funtion
+	DFSUtil(v, visited);
+}
+
+void Graph::DFSUtil(int v, bool visited[])
+{
+	//mark current vertex as visited and display it
+	visited[v]=true;
+	cout<<v<<" ";
+
+	//list iterator
+	list<int>::iterator i;
+
+	for(i=adj[v].begin(); i!=adj[v].end(); ++i)
+	{
+		//if the adjacent vertex/vertices of current vertex is/are not visited, 
+		//recursively call the DFSUtil function for all adjacent vertices.
+		if(!visited[*i])
+			DFSUtil(*i, visited);
+	}
+}

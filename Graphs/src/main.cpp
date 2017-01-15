@@ -4,6 +4,7 @@
 int main()
 {
 	int option;
+	bool flag=true;
 
 	//Making an arbitrary graph consisting of 4 vertices 0,1,2,3
 	Graph g(4);
@@ -16,20 +17,33 @@ int main()
 	g.addEdge(2,3);
 	g.addEdge(3,3);
 
-	cout<<"Graph Programming Questions: \n";
-	cout<<"1. Breadth First Traversal.\n";
-	cout<<"Enter your choice: ";
-	cin>>option;
-	
-	switch(option)
+	while(1 && flag)
 	{
-		case 1: cout<<"\nThe breadth first traversal of graph beginning from vertex 2 is as follows: \n";
-				g.BFS(2);
-				cout<<endl;
-				break;
+		cout<<"Graph Programming Questions: \n";
+		cout<<"1. Breadth First Traversal.\n";
+		cout<<"2. Depth First Traversal. \n";
+		cout<<"3. Exit the program.\n";
+		cout<<"Enter your choice: ";
+		cin>>option;
+		
+		switch(option)
+		{
+			case 1: cout<<"\nThe breadth first traversal of graph beginning from vertex 2 is as follows: \n";
+					g.BFS(2);
+					cout<<endl<<endl;
+					break;
 
-		default: cout<<"Wrong input! Exiting!\n";
+			case 2: cout<<"\nThe depth first traversal of graph beginning from vertex 2 is as follows: \n";
+					g.DFS(2);
+					cout<<endl<<endl;
+					break;
+
+			case 3: cout<<"\nExiting the program.\n\n";
+					flag=false;
+					break;
+
+			default: cout<<"Wrong input! Exiting!\n";
+		}
 	}
-
 	return 0;
 }
