@@ -33,8 +33,8 @@ int main()
 					cout<<endl<<endl;
 					break;
 
-			case 2: cout<<"\nThe depth first traversal of graph beginning from vertex 2 is as follows: \n";
-					g.DFS(2);
+			case 2: cout<<"\nThe depth first traversal of graph is as follows: \n";
+					g.DFS();
 					cout<<endl<<endl;
 					break;
 

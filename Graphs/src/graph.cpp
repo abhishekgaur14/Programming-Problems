@@ -52,7 +52,7 @@ void Graph::BFS(int s)
 	}
 }
 
-void Graph::DFS(int v)
+void Graph::DFS()
 {
 	bool *visited = new bool[V];
 	
@@ -63,7 +63,11 @@ void Graph::DFS(int v)
 	}
 
 	//call the DFS Utility funtion
-	DFSUtil(v, visited);
+	for(int i=0;i<V;i++)
+	{
+		if(!visited[i])
+			DFSUtil(i, visited);
+	}
 }
 
 void Graph::DFSUtil(int v, bool visited[])

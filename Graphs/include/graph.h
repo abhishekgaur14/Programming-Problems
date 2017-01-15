@@ -14,7 +14,7 @@ class Graph
 		Graph(int V);
 		void addEdge(int v, int w);
 		void BFS(int s);
-		void DFS(int v);
+		void DFS();
 		void DFSUtil(int v, bool visited[]);
 };
 
