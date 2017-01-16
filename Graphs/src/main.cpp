@@ -63,25 +63,25 @@ int main()
 		switch(option)
 		{
 			case 1: cout<<"\nThe breadth first traversal of graph beginning from vertex 0 is as follows: \n";
-					graph->BFS(0);
-					cout<<endl<<endl;
-					break;
+				graph->BFS(0);
+				cout<<endl<<endl;
+				break;
 
 			case 2: cout<<"\nThe depth first traversal of graph is as follows: \n";
-					graph->DFS();
-					cout<<endl<<endl;
-					break;
+				graph->DFS();
+				cout<<endl<<endl;
+				break;
 
 			case 3: if(graph->isCycle())
-						cout<<"\nThe graph has a cycle.\n\n";
-					else
-						cout<<"\nThe graph doesn't have a cycle.\n\n";
-					break;
+					cout<<"\nThe graph has a cycle.\n\n";
+				else
+					cout<<"\nThe graph doesn't have a cycle.\n\n";
+				break;
 
 			case 4: delete graph;
-					cout<<"\nExiting the program.\n\n";
-					flag=false;
-					break;
+				cout<<"\nExiting the program.\n\n";
+				flag=false;
+				break;
 
 			default: cout<<"Wrong input! Exiting!\n";
 		}
