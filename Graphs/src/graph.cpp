@@ -1,10 +1,18 @@
 #include "graph.h"
 #include <iostream>
 
-Graph::Graph(int V)
+//Constructor
+Graph::Graph(int V, int E)
 {
 	this->V = V;
+	this->E = E;
+	this->edge = new Edge[E];
 	adj = new list<int>[V];
+}
+
+Graph::~Graph()
+{
+	cout<<"\nDeleting the graph from the memory.\n";
 }
 
 void Graph::addEdge(int v, int w)
@@ -12,6 +20,37 @@ void Graph::addEdge(int v, int w)
 	adj[v].push_back(w);
 }
 
+
+// A utility function to find set of an element i
+// (uses path compression technique)
+int Graph::find(subset subsets[], int i)
+{
+	if(subsets[i].parent != i)
+		subsets[i].parent = find(subsets, subsets[i].parent);
+
+	return subsets[i].parent;
+}
+
+
+// A function that does union of two sets of x and y
+// (uses union by rank)
+void Graph::Union(subset subsets[], int x, int y)
+{
+	int xroot = find(subsets, x);
+	int yroot = find(subsets, y);
+
+	if(subsets[xroot].rank < subsets[yroot].rank)
+		subsets[xroot].parent=yroot;
+
+	else if(subsets[xroot].rank > subsets[yroot].rank)
+		subsets[yroot].parent=xroot;
+
+	else
+	{
+		subsets[yroot].parent = xroot;
+		subsets[xroot].rank++;
+	}
+}
 
 
 //Breadth First Traversal
@@ -94,4 +133,33 @@ void Graph::DFSUtil(int v, bool visited[])
 		if(!visited[*i])
 			DFSUtil(*i, visited);
 	}
+}
+
+
+// A function to check whether the graph has a cycle or not
+int Graph::isCycle()
+{
+	int V = this->V;
+	int E = this->E;
+
+	subset *subsets = new subset[V];
+
+	for(int v=0; v<V; v++)
+	{
+		subsets[v].parent = v;
+		subsets[v].rank = 0;
+	}
+
+	for(int e=0; e<E; e++)
+	{
+		int x = find(subsets, edge[e].src);
+		int y = find(subsets, edge[e].dest);
+
+		if(x==y)
+			return 1;
+
+		Union(subsets,x,y);
+	}
+
+	return 0;
 }
