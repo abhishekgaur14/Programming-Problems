@@ -1,51 +1,47 @@
 #ifndef GRAPH_H
 #define GRAPH_H
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <queue>
 #include <list>
 
 using namespace std;
 
 // a structure to represent a weighted edge in graph
-struct Edge
+typedef struct  
 {
-	int src, dest, weight;
-};
+	int src;
+	int dest;
+	int weight;
+}Edge;
 
 // A structure to represent a subset for union-find
-struct subset
+typedef struct 
 {
 	int parent;
 	int rank;
-};
+}Subset;
+
 
 class Graph
 {
-	private:
-		int V,E;					//V - Number of vertices in the graph
-		list<int> *adj;				//Adjacency list to hold the adjacent nodes of a vertex
+		int V;					//V - Number of vertices in the graph
+		vector<Edge> edge;
+		Subset *subset;
+		
+		int find(int i);
+		void Union(int x, int y);
 
 	public:
-		Edge *edge;
-		Graph(int V, int E);
-		~Graph();
-		void addEdge(int v, int w);
 		
-		// A function for Breadth-First Traversal of the graph
-		void BFS(int s);
-
-		// Functions for Depth-First Traversal of the graph
+		Graph(int V);
+		~Graph();
+		void addEdge(int v, int w, int wt);
+		void BFS();
 		void DFS();
-		void DFSUtil(int v, bool visited[]);
-
-		// A utility function to find set of an element i
-		// (uses path compression technique)
-		int find(subset subsets[], int i);
-
-		// A function that does union of two sets of x and y
-		// (uses union by rank)
-		void Union(subset subsets[], int x, int y);
-
-		// A function to check whether the graph has a cycle or not
-		int isCycle();
+		void DFSUtil(int v, bool visited[], list<int> *adj);
+		void kruskalMST();
 };
 
 #endif	

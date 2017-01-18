@@ -1,165 +1,151 @@
 #include "graph.h"
-#include <iostream>
 
-//Constructor
-Graph::Graph(int V, int E)
+Graph::Graph(int V)
 {
-	this->V = V;
-	this->E = E;
-	this->edge = new Edge[E];
-	adj = new list<int>[V];
+    this->V=V;
+    subset=new Subset[V];
+    for(int i=0;i<V;i++)
+    {
+        subset[i].parent=i;
+        subset[i].rank=0;
+    }
 }
+ 
 
 Graph::~Graph()
 {
 	cout<<"\nDeleting the graph from the memory.\n";
 }
 
-void Graph::addEdge(int v, int w)
+
+bool edgecmp(Edge i,Edge j)
 {
-	adj[v].push_back(w);
+    return i.weight<j.weight;
 }
 
 
-// A utility function to find set of an element i
-// (uses path compression technique)
-int Graph::find(subset subsets[], int i)
+void Graph::addEdge(int v,int w,int wt)
 {
-	if(subsets[i].parent != i)
-		subsets[i].parent = find(subsets, subsets[i].parent);
+    Edge temp;
+    temp.src=v;
+    temp.dest=w;
+    temp.weight=wt;
+    edge.push_back(temp);
+}
+ 
 
-	return subsets[i].parent;
+int Graph::find(int i)
+{
+    if(subset[i].parent!=i)
+        subset[i].parent=find(subset[i].parent);
+    return subset[i].parent;
+}
+ 
+
+void Graph::Union(int x,int y)
+{
+    int xroot=find(x);
+    int yroot=find(y);
+    if(subset[xroot].rank<subset[yroot].rank)
+        subset[xroot].parent=yroot;
+    else if(subset[yroot].rank<subset[xroot].rank)
+        subset[yroot].parent=xroot;
+    else
+    {
+        subset[yroot].parent=xroot;
+        subset[xroot].rank++;
+    }
 }
 
-
-// A function that does union of two sets of x and y
-// (uses union by rank)
-void Graph::Union(subset subsets[], int x, int y)
+list<int>* createAdjList(vector<Edge> edge, int V)
 {
-	int xroot = find(subsets, x);
-	int yroot = find(subsets, y);
+	list<int> *adj = new list<int>[V];
+	vector<Edge>::iterator i;
 
-	if(subsets[xroot].rank < subsets[yroot].rank)
-		subsets[xroot].parent=yroot;
+	for(i=edge.begin(); i!=edge.end(); i++)
+		adj[i->src].push_back(i->dest);
 
-	else if(subsets[xroot].rank > subsets[yroot].rank)
-		subsets[yroot].parent=xroot;
-
-	else
-	{
-		subsets[yroot].parent = xroot;
-		subsets[xroot].rank++;
-	}
+	return adj;
 }
 
-
-//Breadth First Traversal
-//Time Complexity: O(V+E), where V = number of vertices and E = number of edges
-void Graph::BFS(int s)
+void Graph::BFS()
 {
+	list<int> *adj = createAdjList(edge, V);
+	queue<int> vertex_queue;
 	bool *visited = new bool[V];
+	list<int>::iterator j;
+	int s=0;
 
-	//Mark all nodes as not visited
 	for(int i=0;i<V;i++)
 	{
 		visited[i]=false;
 	}
 
-	//queue for BFS
-	list<int> queue;
-
-	//Mark current node as visited and enqueue it
 	visited[s]=true;
-	queue.push_back(s);
+	vertex_queue.push(s);
 
-	//list iterator
-	list<int>::iterator i;
-
-
-	while(!queue.empty())
+	while(!vertex_queue.empty())
 	{
-		//dequeue and print the value
-		s=queue.front();
-		cout<<s<<" ";
-		queue.pop_front();
+		s=vertex_queue.front();
+		cout<< s <<" ";
+		vertex_queue.pop();
 
-		for(i=adj[s].begin(); i!=adj[s].end(); ++i)
+		for(j=adj[s].begin(); j!=adj[s].end(); j++)
 		{
-			//if the vertex is not visited, mark it as visited and push it onto queue
-			if(!visited[*i])
-			{
-				visited[*i]=true;
-				queue.push_back(*i);
+			if(!visited[*j]){
+				visited[*j]=true;
+				vertex_queue.push(*j);
 			}
 		}
 	}
 }
 
 
-//Depth First Traversal
-//Time Complexity: O(V+E), where V = number of vertices and E = number of edges
 void Graph::DFS()
 {
 	bool *visited = new bool[V];
-	
-	//Mark all nodes as not visited	
+	list<int> *adj = createAdjList(edge,V);
 	for(int i=0;i<V;i++)
-	{
 		visited[i]=false;
-	}
 
-	//call the DFS Utility funtion for all unvisited vertices
-	//we do this because all vertices may not be reachable from a given vertex (Undirected Graph)
 	for(int i=0;i<V;i++)
 	{
 		if(!visited[i])
-			DFSUtil(i, visited);
+			DFSUtil(i, visited, adj);
 	}
 }
 
-void Graph::DFSUtil(int v, bool visited[])
+
+void Graph::DFSUtil(int v, bool visited[], list<int> *adj)
 {
-	//mark current vertex as visited and display it
 	visited[v]=true;
 	cout<<v<<" ";
 
-	//list iterator
 	list<int>::iterator i;
-
-	for(i=adj[v].begin(); i!=adj[v].end(); ++i)
+	for(i=adj[v].begin(); i!=adj[v].end(); i++)
 	{
-		//if the adjacent vertex/vertices of current vertex is/are not visited, 
-		//recursively call the DFSUtil function for all adjacent vertices.
 		if(!visited[*i])
-			DFSUtil(*i, visited);
+			DFSUtil(*i, visited, adj);
 	}
+
 }
 
-
-// A function to check whether the graph has a cycle or not
-int Graph::isCycle()
+void Graph::kruskalMST()
 {
-	int V = this->V;
-	int E = this->E;
-
-	subset *subsets = new subset[V];
-
-	for(int v=0; v<V; v++)
-	{
-		subsets[v].parent = v;
-		subsets[v].rank = 0;
-	}
-
-	for(int e=0; e<E; e++)
-	{
-		int x = find(subsets, edge[e].src);
-		int y = find(subsets, edge[e].dest);
-
-		if(x==y)
-			return 1;
-
-		Union(subsets,x,y);
-	}
-
-	return 0;
+	int e=0;
+    Edge *result=new Edge[V-1];
+    sort(edge.begin(),edge.end(),edgecmp);
+    vector<Edge>::iterator i;
+    for(i=edge.begin();i!=edge.end() && e!=V-1;i++)
+    {
+        int x=find(i->src);
+        int y=find(i->dest);
+        if(x!=y)
+        {
+            result[e++]=*i;
+            Union(x,y);
+        }
+    }
+    for(int i=0;i<e;i++)
+        cout<<result[i].src<<" - "<<result[i].dest<<"     "<<result[i].weight<<endl;
 }
