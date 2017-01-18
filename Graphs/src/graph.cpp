@@ -17,13 +17,13 @@ Graph::~Graph()
 	cout<<"\nDeleting the graph from the memory.\n";
 }
 
-
+//function to compare the edges based on weights
 bool edgecmp(Edge i,Edge j)
 {
     return i.weight<j.weight;
 }
 
-
+//function to add edge to the graph
 void Graph::addEdge(int v,int w,int wt)
 {
     Edge temp;
@@ -34,6 +34,7 @@ void Graph::addEdge(int v,int w,int wt)
 }
  
 
+//finding the parent using path compression
 int Graph::find(int i)
 {
     if(subset[i].parent!=i)
@@ -41,7 +42,7 @@ int Graph::find(int i)
     return subset[i].parent;
 }
  
-
+//Union by rank
 void Graph::Union(int x,int y)
 {
     int xroot=find(x);
@@ -57,6 +58,8 @@ void Graph::Union(int x,int y)
     }
 }
 
+
+//utility function to create adjacency list for graph traversal
 list<int>* createAdjList(vector<Edge> edge, int V)
 {
 	list<int> *adj = new list<int>[V];
@@ -68,6 +71,9 @@ list<int>* createAdjList(vector<Edge> edge, int V)
 	return adj;
 }
 
+
+//Breadth First Search
+//Time Complexity: O(V+E)
 void Graph::BFS()
 {
 	list<int> *adj = createAdjList(edge, V);
@@ -101,6 +107,8 @@ void Graph::BFS()
 }
 
 
+//Depth First Search
+//Time Complexity: O(V+E)
 void Graph::DFS()
 {
 	bool *visited = new bool[V];
@@ -130,6 +138,13 @@ void Graph::DFSUtil(int v, bool visited[], list<int> *adj)
 
 }
 
+
+//Kruskal's Algorithm to find Minimal Spanning Tree
+//Time Complexity: O(ElogE) or O(ElogV). 
+//Sorting of edges takes O(ELogE) time. After sorting, we iterate through all edges and apply find-union algorithm. 
+//The find and union operations can take atmost O(LogV) time. 
+//So overall complexity is O(ELogE + ELogV) time. The value of E can be atmost O(V2), so O(LogV) are O(LogE) same. 
+//Therefore, overall time complexity is O(ElogE) or O(ElogV)
 void Graph::kruskalMST()
 {
 	int e=0;
