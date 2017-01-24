@@ -17,7 +17,10 @@ int main()
 		cout<<"\n4. Find the minimum element in the tree.";
 		cout<<"\n5. Find the maximum element in the tree.";
 		cout<<"\n6. Find the height of the tree.";
-		cout<<"\n7. Exit the program.";
+		cout<<"\n7. Check if a Binary Tree is a Binary Search Tree.";
+		cout<<"\n8. Delete data from tree.";
+		cout<<"\n9. Exit the program.";
+
 		cout<<"\nEnter your choice: ";
 		cin>>option;
 		
@@ -90,7 +93,33 @@ int main()
 
 				break;
 
-			case 7: delete tobj;
+			case 7:	if(!tobj->isEmpty())
+				{ 
+					if(tobj->isBST())
+						cout<<"\nThe tree is a Binary Search Tree.\n";
+					else
+						cout<<"\nThe tree is a not a Binary Search Tree.\n";
+				}
+
+				else
+					cout<<"\nThe tree is empty right now. You may call it a BST.\n";
+				
+				break;
+
+			case 8: if(tobj->isEmpty())
+					cout<<"\nThe tree is empty right now.\n";
+				
+				else
+				{ 
+					cout<<"\nEnter the element you want to delete: ";
+					cin>>num;
+					tobj->deleteNode(num);
+					cout<<"\nElement "<<num<<" has been deleted from the tree.\n";
+				}
+
+				break;
+
+			case 9: delete tobj;
 				flag = false;
 				break;
 

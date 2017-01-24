@@ -253,6 +253,78 @@ int Tree::findHeightUtil(Node* root)
 	return max(findHeightUtil(root->left), findHeightUtil(root->right))+1;
 }
 
+
+bool Tree::isBST()
+{
+	int minValue = numeric_limits<int>::min();
+	int maxValue = numeric_limits<int>::max();
+
+	return isBSTUtil(root, minValue, maxValue);
+}
+
+bool Tree::isBSTUtil(Node* root, int minValue, int maxValue)
+{
+	if(root == NULL)
+		return true;
+	
+	else if(root->data > minValue && root->data < maxValue && 
+		isBSTUtil(root->left, minValue, root->data) && isBSTUtil(root->right, root->data, maxValue))
+		return true;
+	
+	else 
+		return false;
+}
+
+
+void Tree::deleteNode(int data)
+{
+	this->root = deleteNodeUtil(root, data);
+}
+
+Node* Tree::deleteNodeUtil(Node* root, int data)
+{
+	if(root==NULL)
+		return root;
+
+	else if(data < root->data)
+		root->left = deleteNodeUtil(root->left, data);
+
+	else if(data > root->data)
+		root->right = deleteNodeUtil(root->right, data);
+
+	else
+	{
+		if(root->left == NULL && root->right == NULL)
+		{
+			delete root;
+			root=NULL;
+		}
+
+		else if(root->left == NULL)
+		{
+			Node* temp = root;
+			root = root->right;
+			delete temp;
+		}
+
+		else if(root->right == NULL)
+		{
+			Node* temp = root;
+			root = root->left;
+			delete temp;
+		}
+
+		else
+		{
+			int temp = findMinUtil(root->right);
+			root->data = temp;
+			root->right = deleteNodeUtil(root->right, temp);
+		}
+	}
+
+	return root;
+}
+
 bool Tree::isEmpty()
 {
 	if(root==NULL)

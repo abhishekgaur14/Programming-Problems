@@ -4,7 +4,7 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
-
+#include <limits>
 using namespace std;
 
 struct Node
@@ -25,6 +25,8 @@ class Tree
 		int findMinUtil(Node* root);
 		int findMaxUtil(Node* root);
 		int findHeightUtil(Node* root);
+		bool isBSTUtil(Node* root, int minValue, int maxValue);
+		Node* deleteNodeUtil(Node* root, int data);
 
 	public:
 		Tree();
@@ -37,6 +39,8 @@ class Tree
 		int findMin();
 		int findMax();
 		int findHeight();
+		bool isBST();
+		void deleteNode(int data);
 };
 
 #endif
