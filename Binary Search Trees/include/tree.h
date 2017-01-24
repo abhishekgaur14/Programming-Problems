@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ class Tree
 		void deleteTree(Node *root);
 		int findMinUtil(Node* root);
 		int findMaxUtil(Node* root);
+		int findHeightUtil(Node* root);
 
 	public:
 		Tree();
@@ -34,6 +36,7 @@ class Tree
 		bool isEmpty();
 		int findMin();
 		int findMax();
+		int findHeight();
 };
 
 #endif

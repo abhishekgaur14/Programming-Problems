@@ -234,6 +234,25 @@ int Tree::findMaxUtil(Node* root)
 }
 
 
+int Tree::findHeight()
+{
+	if(root == NULL)
+	{
+		cout<<"\nThe tree is empty right now. Hence the height is 0.\n";
+		return 0;
+	}
+
+	return findHeightUtil(root);
+}
+
+int Tree::findHeightUtil(Node* root)
+{
+	if(root == NULL)
+		return -1;
+
+	return max(findHeightUtil(root->left), findHeightUtil(root->right))+1;
+}
+
 bool Tree::isEmpty()
 {
 	if(root==NULL)

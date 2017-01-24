@@ -16,7 +16,8 @@ int main()
 		cout<<"\n3. Search for an element in the tree.";
 		cout<<"\n4. Find the minimum element in the tree.";
 		cout<<"\n5. Find the maximum element in the tree.";
-		cout<<"\n6. Exit the program.";
+		cout<<"\n6. Find the height of the tree.";
+		cout<<"\n7. Exit the program.";
 		cout<<"\nEnter your choice: ";
 		cin>>option;
 		
@@ -81,7 +82,15 @@ int main()
 
 				break;
 
-			case 6: delete tobj;
+			case 6: if(!tobj->isEmpty())
+					cout<<"\nThe height of the tree is "<<tobj->findHeight()<<".\n";
+
+				else
+					cout<<"\nThe tree is empty right now. So the height is 0.\n";
+
+				break;
+
+			case 7: delete tobj;
 				flag = false;
 				break;
 
