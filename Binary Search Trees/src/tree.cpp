@@ -47,19 +47,84 @@ void Tree::insertUtil(Node* root, int data)
 }
 
 
-void Tree::print()
+void Tree::DFS()
 {
-	printUtil(root);
+	if(root==NULL)
+	{
+		cout<<"\nThe tree is empty right now.";
+		return;
+	}
+
+	cout<<"\nIn-order Traversal:\n";
+	DFSUtil(root, 0);
+
+	cout<<"\nPre-order Traversal:\n";
+	DFSUtil(root, 1);
+
+	cout<<"\nPost-order Traversal:\n";
+	DFSUtil(root, 2);
 }
 
-void Tree::printUtil(Node* root)
+void Tree::DFSUtil(Node* root, int flag)		//flag: 0 -> Inorder, 1 -> Pre-order, 2 -> Post-order
 {
-	if(!root)
-		return;
+	//Inorder Traversal
+	if(flag == 0)
+	{
+		if(!root)
+			return;
+		DFSUtil(root->left,flag);
+		cout<<root->data<<" ";
+		DFSUtil(root->right, flag);
+	}
 
-	printUtil(root->left);
-	cout<<root->data<<" ";
-	printUtil(root->right);
+	//Pre-order Traversal
+	if(flag == 1)
+	{
+		if(!root)
+			return;
+		cout<<root->data<<" ";
+		DFSUtil(root->left, flag);
+		DFSUtil(root->right, flag);
+	}
+
+	//Post-order Traversal
+	if(flag == 2)
+	{
+		if(!root)
+			return;
+		DFSUtil(root->left, flag);
+		DFSUtil(root->right, flag);
+		cout<<root->data<<" ";	
+	}
+}
+
+
+void Tree::BFS()
+{
+	if(root==NULL)
+	{
+		cout<<"\nThe tree is empty right now.";
+		return;
+	}
+
+	cout<<"\nBreadth First Traversal / Level-Order Traversal looks like this: \n";
+
+	queue<Node*> Q;
+	Q.push(root);
+
+	while(!Q.empty())
+	{
+		Node* current = Q.front();
+		cout<< current->data <<" ";
+
+		if(current->left != NULL)
+			Q.push(current->left);
+
+		if(current->right != NULL)
+			Q.push(current->right);
+
+		Q.pop();
+	}
 }
 
 
@@ -90,6 +155,13 @@ bool Tree::searchUtil(Node* root, int data)
 		return searchUtil(root->right, data);
 }
 
+bool Tree::isEmpty()
+{
+	if(root==NULL)
+		return true;
+
+	return false;
+}
 
 void Tree::deleteTree(Node* root)
 {
