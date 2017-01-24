@@ -155,6 +155,86 @@ bool Tree::searchUtil(Node* root, int data)
 		return searchUtil(root->right, data);
 }
 
+/* Iterative solutions for finding min and max element in the tree.
+int Tree::findMin()
+{
+	//if the tree is empty this function returns -1.
+	if(root==NULL)			
+	{
+		cout<<"\nThe tree is empty right now.\n";
+		return -1;
+	}
+	
+	Node* rootNode = root;
+
+	while(rootNode->left != NULL)
+		rootNode = rootNode->left;
+
+	return rootNode->data;	
+}
+
+int Tree::findMax()
+{
+	//if the tree is empty this function returns -1.
+	if(root==NULL)			
+	{
+		cout<<"\nThe tree is empty right now.\n";
+		return -1;
+	}
+
+	Node* rootNode = root;
+	
+	while(rootNode->right != NULL)
+		rootNode= root->right;
+
+	return rootNode->data;	
+}
+*/
+
+//Recursive solutions for find min and max element in a tree
+int Tree::findMin()
+{
+	if(!root)
+	{
+		cout<<"\nThe tree is empty right now.\n";
+		return -1;
+	}
+
+	Node* rootNode = root;
+	return findMinUtil(rootNode);
+}
+
+int Tree::findMinUtil(Node* root)
+{
+	if(root->left == NULL)
+		return root->data;
+
+	return findMinUtil(root->left);
+}
+
+int Tree::findMax()
+{
+	if(!root)
+	{
+		cout<<"\nThe tree is empty right now.\n";
+		return -1;
+	}
+
+	Node* rootNode = root;
+	return findMaxUtil(rootNode);
+}
+
+int Tree::findMaxUtil(Node* root)
+{
+	if(root->right == NULL)
+		return root->data;
+
+	return findMaxUtil(root->right);
+}
+
+
+
+
 bool Tree::isEmpty()
 {
 	if(root==NULL)

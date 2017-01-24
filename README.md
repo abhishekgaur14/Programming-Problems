@@ -1,7 +1,7 @@
 #Various C/C++ programming questions 
 <b>Topics included:</b><br>
 - <b>Arrays</b>
-- <b>Binary Search Trees:</b> Insertion, Search, Traversal
+- <b>Binary Search Trees:</b> Insertion, Search, Traversal, Miscellaneous Questions
 - <b>Graph Theory:</b> Creation, Traversal, Various Algorithms
 - <b>Hash Table Implementation:</b> Display, Addition, Deletion, Lookup
 - <b>Linked Lists:</b> Insertion, Deletion, Traversal, Reversal

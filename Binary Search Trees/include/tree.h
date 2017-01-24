@@ -21,7 +21,8 @@ class Tree
 		void DFSUtil(Node* root, int flag);
 		bool searchUtil(Node* root, int data);
 		void deleteTree(Node *root);
-
+		int findMinUtil(Node* root);
+		int findMaxUtil(Node* root);
 
 	public:
 		Tree();
@@ -31,6 +32,8 @@ class Tree
 		bool search(int data);
 		void BFS();
 		bool isEmpty();
+		int findMin();
+		int findMax();
 };
 
 #endif
