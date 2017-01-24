@@ -155,6 +155,7 @@ bool Tree::searchUtil(Node* root, int data)
 		return searchUtil(root->right, data);
 }
 
+
 /* Iterative solutions for finding min and max element in the tree.
 int Tree::findMin()
 {
@@ -231,8 +232,6 @@ int Tree::findMaxUtil(Node* root)
 
 	return findMaxUtil(root->right);
 }
-
-
 
 
 bool Tree::isEmpty()
