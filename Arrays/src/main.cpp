@@ -19,12 +19,12 @@ int main()
         switch(option)
         {
             case 1: cout<<"Enter the string: ";
-                getline(cin,str);
-                if(!isUniqueString_2(str))
-                    cout<<"\nThe entered string does not have unique characters.\n";
-                else
-                    cout<<"\nThe entered string has all unique characters.\n";
-                break;
+                    getline(cin,str);
+                    if(!isUniqueString_2(str))
+                        cout<<"\nThe entered string does not have unique characters.\n";
+                    else
+                        cout<<"\nThe entered string has all unique characters.\n";
+                    break;
 
             case 2: {
                     cout<<"Enter the string: ";
@@ -39,8 +39,8 @@ int main()
                 }
 
             case 3: cout<<"\nDeleting the string from memory and exiting.\n\n";
-                flag = false;
-                break;
+                    flag = false;
+                    break;
 
             default: cout<<"\nWrong input! \n";
         }
