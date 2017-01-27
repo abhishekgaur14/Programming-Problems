@@ -325,6 +325,7 @@ Node* Tree::deleteNodeUtil(Node* root, int data)
 	return root;
 }
 
+
 bool Tree::isEmpty()
 {
 	if(root==NULL)
@@ -332,6 +333,7 @@ bool Tree::isEmpty()
 
 	return false;
 }
+
 
 void Tree::deleteTree(Node* root)
 {
@@ -342,6 +344,7 @@ void Tree::deleteTree(Node* root)
 		delete root;
 	}
 }
+
 
 Tree::~Tree()
 {

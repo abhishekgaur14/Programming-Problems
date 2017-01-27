@@ -11,7 +11,7 @@ LDIR =./lib
 _DEPS = ctci.h 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = q1.o main.o
+_OBJ = q1.o q2.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
