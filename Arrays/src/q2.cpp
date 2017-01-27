@@ -1,3 +1,5 @@
+// Q2. Reverse a null-terminated string.
+
 #include "ctci.h"
 
 void reverse(char *str)
