@@ -57,7 +57,7 @@ int main()
                     break;
                 }
 
-            case 4: cout<<"\nDeleting the string from memory and exiting.\n\n";
+            case 4: cout<<"\nExiting the program.\n\n";
                     flag = false;
                     break;
 
